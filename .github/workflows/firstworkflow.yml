@@ -10,3 +10,9 @@ jobs:
     steps:
       - run: echo hello world
       - run: tree
+        name: Tree Before Checkout
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Tree After Checkout
+        run: tree
+      - run: cat README.md
