@@ -16,3 +16,7 @@ jobs:
       - name: Tree After Checkout
         run: tree
       - run: cat README.md
+  usingactionjob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nicruo/novemberaction@v1 
