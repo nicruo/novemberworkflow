@@ -19,4 +19,5 @@ jobs:
   usingactionjob:
     runs-on: ubuntu-latest
     steps:
-      - uses: nicruo/novemberaction@92cdad8faa771729d05584d0b78ec42189cee390
+      - uses: nicruo/novemberaction@v1
+      - run: echo 'Hello world from summary' >> $GITHUB_STEP_SUMMARY
