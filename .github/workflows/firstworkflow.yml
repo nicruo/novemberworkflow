@@ -5,6 +5,12 @@ on:
   workflow_dispatch:
 
 jobs:
+  usingactionjob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nicruo/novemberaction@v1
+      - run: echo 'Hello world from summary' >> $GITHUB_STEP_SUMMARY
+      
   helloworld:
     needs: usingactionjob
     runs-on: ubuntu-latest
@@ -17,8 +23,19 @@ jobs:
       - name: Tree After Checkout
         run: tree
       - run: cat README.md
-  usingactionjob:
-    runs-on: ubuntu-latest
+  
+  jobA:
+    runs-on: windows-latest
+    needs: helloworld
     steps:
-      - uses: nicruo/novemberaction@v1
-      - run: echo 'Hello world from summary' >> $GITHUB_STEP_SUMMARY
+      - run: pwd
+  jobB:
+    runs-on: windows-latest
+    needs: helloworld
+    steps:
+      - run: pwd
+  jobC:
+    runs-on: windows-latest
+    needs: jobB
+    steps:
+      - run: pwd
